@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icones/favicon_io (5)/favicon.ico" type="image/x-icon">
+    <title>Areia's Tech | Contato</title>
+    <link rel="stylesheet" href="styles/contato.css"> 
+    <link rel="stylesheet" href="styles/globals.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="header--inner-content">
+                <h1 class="logo">AREIA'S <span>TECH</span></h1>
+                <nav>
+                    <ul class="lista">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-icon-container">
+                    <button onclick="goToCart()" class="style-carrinho"><img src="images/carrinho-de-compras.png" alt="cart"> </button>
+                    <img src="images/menu.png" alt="menu" class="menu-button">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="page-inner-content">
+            <section class="section-title">
+                <h2>Fale Conosco</h2>
+                <div class="subtitle-underline"></div>
+            </section>
+
+            <div class="contact-info">
+                <div class="contact-details">
+                    <h3>Informações de Contato</h3>
+                    <p><strong>Endereço:</strong> Rua Fictícia, 123, Centro, Cidade - Estado</p>
+                    <p><strong>Telefone:</strong> (21) 1234-5678</p>
+                    <p><strong>Email:</strong> contato@areiastech.com.br</p>
+                    <div class="social-media">
+                        <p><strong>Redes Sociais:</strong></p>
+                        <a href="#"><img src="icones/favicon_io (1)/favicon.ico" alt="Facebook"></a>
+                        <a href="#"><img src="icones/favicon_io (2)/favicon.ico" alt="Instagram"></a>
+                        <a href="#"><img src="icones/favicon_io (3)/favicon.ico" alt="Twitter"></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envie uma Mensagem</h3>
+                    <form action="submit_contact_form.php" method="POST">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="subject">Assunto:</label>
+                        <input type="text" id="subject" name="subject" required>
+
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button type="submit" id="submit-button">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gray-background">
+        <div class="page-inner-content footer-content">
+            <div class="download-options">
+                <p>Baixe nosso Aplicativo</p>
+                <p>Baixe nosso Aplicativo para Android e IOS</p>
+                <div>
+                    <img src="images/play-store.png" alt="">
+                    <img src="images/app-store.png" alt="">
+                </div>
+            </div>
+
+            <div class="logo-footer">
+                <h1 class="logo">AREIA'S <span>TECH</span></h1>
+                <p>Tecnologia que transforma seu dia a dia com praticidade e diversão!</p>
+            </div>
+            <div class="links-footer">
+                <h3>Links úteis</h3>
+                <ul>
+                    <li>Cupons</li>
+                    <li>Artigos</li>
+                    <li>Políticas</li>
+                    <li>Tornar-se afiliado</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="page-inner-content">
+        <div class="page-inner-content copyright">
+            <p>&copy; 2024 Areia's Tech. Todos os direitos reservados</p>
+        </div>
+     </footer>
+    <script>
+        // redireciona para a pagina do carrinho
+        function goToCart() {
+        window.location.href = "carrinho.html"; // 
+    }
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+
+        menuButton.addEventListener('click', () => {
+            navbar.classList.toggle('show-menu');
+        })
+
+        document.getElementById('submit-button').addEventListener('click', function(event) {
+        alert('Obrigado por entrar em contato! Estamos processando sua mensagem.');
+        // Aqui o formulário será enviado normalmente, sem nenhuma interrupção
+    });
+    </script>
+</body>
+</html>

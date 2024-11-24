@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icones/favicon_io (5)/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/globals.css">
+    <link rel="stylesheet" href="styles/carrinho.css">
+    <title>Carrinho | Areia's Tech</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header--inner-content">
+            <h1 class="logo">AREIA'S <span>TECH</span></h1>
+            <nav>
+                <ul class="lista">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icon-container">
+                
+                <button onclick="goToCart()" class="style-carrinho"><img src="images/carrinho-de-compras.png" alt="cart"> </button>
+                <img src="images/menu.png" alt="menu" class="menu-button">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-inner-content">
+            <h2 class="section-title">Carrinho de Compras</h2>
+            <div class="subtitle-underline"></div>
+
+            <div id="carrinho-items" class="carrinho-container">
+                <!-- Produtos adicionados serão exibidos aqui -->
+            </div>
+
+            <div class="carrinho-total">
+                <p><strong>Total:</strong> <span id="carrinho-total">R$ 0,00</span></p>
+                <div>
+                    <label for="input-cupom">Código de Desconto:</label>
+                    <input type="text" id="input-cupom" placeholder="Insira o código">
+                    <button onclick="aplicarDesconto()">Aplicar</button>
+                </div>
+                <div class="botoes-opcoes">
+                    <button onclick="irParaDesconto()">Ir para o Jogo de Desconto</button>
+                    <button onclick="finalizarCompra()">Finalizar Compra</button>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="gray-background">
+        <div class="page-inner-content footer-content">
+            <div class="logo-footer">
+                <h1 class="logo">AREIA'S <span>TECH</span></h1>
+                <p>Tecnologia que transforma seu dia a dia com praticidade e diversão!</p>
+            </div>
+        </div>
+
+        <hr class="page-inner-content">
+        <div class="page-inner-content copyright">
+            <p>&copy; 2024 Areia's Tech. Todos os direitos reservados</p>
+        </div>
+     </footer>
+
+     <script>
+        // redireciona para a pagina do carrinho
+        function goToCart() {
+            window.location.href = "carrinho.html";
+        }
+    
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+    
+        menuButton.addEventListener('click', () => {
+            navbar.classList.toggle('show-menu');
+        });
+    
+        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    
+        function atualizarCarrinho() {
+            const carrinhoItems = document.getElementById('carrinho-items');
+            const totalSpan = document.getElementById('carrinho-total');
+            carrinhoItems.innerHTML = '';
+            let total = 0;
+    
+            carrinho.forEach((produto, index) => {
+                total += produto.preco;
+                carrinhoItems.innerHTML += `
+                    <div class="produto-carrinho">
+                        <p><strong>${produto.nome}</strong> - R$ ${produto.preco.toFixed(2)}</p>
+                        <button onclick="removerProduto(${index})">Remover</button>
+                    </div>
+                `;
+            });
+    
+            totalSpan.innerText = `R$ ${total.toFixed(2)}`;
+        }
+    
+        function removerProduto(index) {
+            carrinho.splice(index, 1);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            atualizarCarrinho();
+        }
+    
+        // Função para carregar o código de desconto armazenado
+        function carregarCodigoDesconto() {
+            const codigo = localStorage.getItem("codigoDesconto");
+            if (codigo) {
+                document.getElementById("input-cupom").value = codigo;
+                aplicarDesconto();
+                localStorage.removeItem("codigoDesconto"); // Remove o código após carregar
+            }
+        }
+    
+        // Função para aplicar o desconto ao total
+        function aplicarDesconto() {
+            const inputCupom = document.getElementById("input-cupom").value;
+            const totalSpan = document.getElementById("carrinho-total");
+    
+            let total = carrinho.reduce((soma, produto) => soma + produto.preco, 0);
+            let desconto = 0;
+    
+            switch (inputCupom) {
+                case "0505":
+                    desconto = 0.05;
+                    break;
+                case "1010":
+                    desconto = 0.10;
+                    break;
+                case "1515":
+                    desconto = 0.15;
+                    break;
+                case "2020":
+                    desconto = 0.20;
+                    break;
+                case "2525":
+                    desconto = 0.25;
+                    break;
+                case "3030":
+                    desconto = 0.30;
+                    break;
+                default:
+                    alert("Código inválido ou expirado!");
+                    return;
+            }
+    
+            const totalComDesconto = total - total * desconto;
+            totalSpan.innerText = `R$ ${totalComDesconto.toFixed(2)}`;
+            alert(`Desconto de ${(desconto * 100).toFixed(0)}% aplicado com sucesso!`);
+        }
+    
+        // Função para redirecionar para o jogo de desconto
+        function irParaDesconto() {
+            if (carrinho.length === 0) {
+                alert('Seu carrinho está vazio! Adicione itens antes de continuar.');
+                return;
+            }
+            // Redireciona para a página do jogo de desconto
+            window.location.href = 'sorte.html';
+        }
+    
+        // Função para finalizar a compra
+        function finalizarCompra() {
+            if (carrinho.length === 0) {
+                alert('Seu carrinho está vazio! Adicione itens antes de finalizar a compra.');
+                return;
+            }
+    
+            const totalSpan = document.getElementById("carrinho-total").innerText;
+            alert(`Compra finalizada com sucesso! Valor total: ${totalSpan}`);
+            // Aqui você pode implementar lógica para limpar o carrinho e redirecionar para uma página de confirmação
+            localStorage.removeItem('carrinho'); // Limpa o carrinho
+            window.location.href = 'confirmacao.html'; // Redireciona para uma página de confirmação
+        }
+    
+        // Função para carregar o código de desconto armazenado ao inicializar
+        carregarCodigoDesconto();
+    
+        // Inicializa o carrinho na página
+        atualizarCarrinho();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+.carrinho-container {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.produto-carrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.produto-carrinho button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.produto-carrinho button:hover {
+    background-color: #cc0000;
+}
+
+.carrinho-total {
+    margin-top: 1.5rem;
+    text-align: right;
+    font-size: 1.2rem;
+}
+
+.carrinho-total button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+}

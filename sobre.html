@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icones/favicon_io (5)/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/sobre.css">
+    <link rel="stylesheet" href="styles/globals.css">
+    <title>Areia's Tech | Sobre</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header--inner-content">
+            <h1 class="logo">AREIA'S <span>TECH</span></h1>
+            <nav>
+                <ul class="lista">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icon-container">
+                <button onclick="goToCart()" class="style-carrinho"><img src="images/carrinho-de-compras.png" alt="cart"> </button>
+                <img src="images/menu.png" alt="menu" class="menu-button">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-inner-content">
+            <h2>Sobre Areia's Tech</h2>
+            <p>Areia's Tech é uma empresa fictícia especializada em tecnologia de ponta, trazendo produtos inovadores para transformar o seu dia a dia.</p>
+            <h3>Nossa Missão</h3>
+            <p>Levar tecnologia acessível, confiável e de alta performance a todas as pessoas.</p>
+            <h3>Visão</h3>
+            <p>Ser referência no mercado de tecnologia, promovendo mudanças positivas através de inovação.</p>
+            <h3>Valores</h3>
+            <ul>
+                <li>Inovação</li>
+                <li>Compromisso</li>
+                <li>Ética</li>
+                <li>Sustentabilidade</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="gray-background">
+        <div class="page-inner-content footer-content">
+            <div class="download-options">
+                <p>Baixe nosso Aplicativo</p>
+                <p>Baixe nosso Aplicativo para Android e IOS</p>
+                <div>
+                    <img src="images/play-store.png" alt="">
+                    <img src="images/app-store.png" alt="">
+                </div>
+            </div>
+
+            <div class="logo-footer">
+                <h1 class="logo">AREIA'S <span>TECH</span></h1>
+                <p>Tecnologia que transforma seu dia a dia com praticidade e diversão!</p>
+            </div>
+            <div class="links-footer">
+                <h3>Links úteis</h3>
+                <ul>
+                    <li>Cupons</li>
+                    <li>Artigos</li>
+                    <li>Políticas</li>
+                    <li>Tornar-se afiliado</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="page-inner-content">
+        <div class="page-inner-content copyright">
+            <p>&copy; 2024 Areia's Tech. Todos os direitos reservados</p>
+        </div>
+     </footer>
+    <script>
+        // redireciona para a pagina do carrinho
+        function goToCart() {
+        window.location.href = "carrinho.html"; // 
+    }
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+
+        menuButton.addEventListener('click', () => {
+            navbar.classList.toggle('show-menu');
+        })
+    </script>
+</body>
+</html>

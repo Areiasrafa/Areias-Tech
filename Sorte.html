@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icones/favicon_io (5)/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/globals.css">
+    <title>Areia's Tech | Jogo Do Desconto</title>
+    <style>
+        body{
+            background-image: linear-gradient(#fff, #c7c7c7);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-inner-content">
+            <h1 class="logo">AREIA'S <span>TECH</span></h1>
+            <nav>
+                <ul class="lista">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icon-container">
+                <button onclick="goToCart()" class="style-carrinho"><img src="images/carrinho-de-compras.png" alt="cart"> </button>
+                <img src="images/menu.png" alt="menu" class="menu-button">
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="header--inner-content">
+            
+            <div class="header-bottom-side">
+                <h2>Bem-vindo ao Jogo do Desconto!</h2>
+                <p>Escolha 6 números entre 1 e 10 para ganhar um desconto!</p>
+            </div>
+        </div>
+            
+    </header>
+    <main>
+        <div id="numerosEscolhidos">
+            <input type="number" min="1" max="10" placeholder="Número 1" id="num1">
+            <input type="number" min="1" max="10" placeholder="Número 2" id="num2">
+            <input type="number" min="1" max="10" placeholder="Número 3" id="num3">
+            <input type="number" min="1" max="10" placeholder="Número 4" id="num4">
+            <input type="number" min="1" max="10" placeholder="Número 5" id="num5">
+            <input type="number" min="1" max="10" placeholder="Número 6" id="num6">
+        </div>
+        <button onclick="verificarSorte()">Verificar Sorte</button>
+        <p id="resultado"></p>
+        
+        <button onclick="goToCart()" class="Voltar-ao-carrinho">Voltar ao Carrinho</button>
+    </main>
+    <script>
+        // redireciona para a pagina do carrinho
+        function goToCart() {
+        window.location.href = "carrinho.html"; // 
+    }
+
+        // menu
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+
+        menuButton.addEventListener('click', () => {
+            navbar.classList.toggle('show-menu');
+        })
+        const NUMEROS_SORTE = [4, 8, 5, 10, 2];
+        
+                function verificarSorte() {
+                    // Obtém os números dados pelo cliente
+                    const numerosCliente = [
+        
+                        parseInt(document.getElementById("num1").value) || 0,
+                        parseInt(document.getElementById("num2").value) || 0,
+                        parseInt(document.getElementById("num3").value) || 0,
+                        parseInt(document.getElementById("num4").value) || 0,
+                        parseInt(document.getElementById("num5").value) || 0,
+                        parseInt(document.getElementById("num6").value) || 0,
+                    ];
+        
+                    // Filtrar os números que estão nos números armazenados
+                    const acertos = numerosCliente.filter(num => NUMEROS_SORTE.includes(num));
+                    const quantidadeAcertos = acertos.length;
+                    // Verifica a quantidade de acertos pra dar o codigo de desconto certo
+                    let desconto = 0;
+                    let codigoDesconto = "";
+                    switch(quantidadeAcertos) {
+                case 1:
+                    desconto = 5;
+                    codigoDesconto = "0505";
+                    break;
+                case 2:
+                    desconto = 10;
+                    codigoDesconto = "1010";
+                    break;
+                case 3:
+                    desconto = 15;
+                    codigoDesconto = "1515";
+                    break;
+                case 4:
+                    desconto = 20;
+                    codigoDesconto = "2020";
+                    break;
+                case 5:
+                    desconto = 25;
+                    codigoDesconto = "2525";
+                    break;
+                case 6:
+                    desconto = 30;
+                    codigoDesconto = "3030";
+                    break;
+                default:
+                    desconto = 0;
+                    codigoDesconto = "";
+                }
+                // Exibe o resultado
+        
+        
+            let resultado = "";
+        
+        if (quantidadeAcertos > 0) {
+            resultado += `<p class="sucesso">Parabéns! Você teve ${quantidadeAcertos} acerto(s): ${acertos.join(", ")}.</p>`;
+            resultado += `<p class="sucesso">Desconto total: ${desconto}% - Seu código é: ${codigoDesconto}</p>`;
+        
+            // Quando acerta todos, gera a mensagem
+            if (quantidadeAcertos > 5) {
+                resultado += `<p class="sucesso">Sorte Grande! Você acertou todos!</p>`;
+            }
+        
+            // Exibe o alerta para sucesso
+            alert(`Verificando acertos...`);
+        } else {
+            resultado = `<p class="erro">Que pena! Você não acertou nenhum número. Tente novamente.</p>`;
+            resultado += `<p class="erro">Desconto total: 0%</p>`;
+        
+            // Exibe o alerta para erro
+            alert("Verificando acertos...");
+        }
+        
+        // Atualiza o conteúdo da div
+        document.getElementById("resultado").innerHTML = resultado;
+        
+                }
+    </script>
+</body>
+</html>

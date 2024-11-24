@@ -1,0 +1,307 @@
+/* Reset e Configuração Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #2c2c2c;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2c2c2c;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-inner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #0084ff;
+}
+
+.logo span {
+    color: #fff;
+}
+
+.lista {
+    display: flex;
+    list-style: none;
+}
+
+.lista li {
+    margin-left: 1.5rem;
+}
+
+.lista li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.lista li a:hover {
+    font-weight: bold;
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+.nav-icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon-container img {
+    width: 25px;
+    cursor: pointer;
+}
+.nav-icon-container img:first-child {
+    margin-right: 1rem;
+}
+.style-carrinho{
+    background-color: transparent;
+    border: none;
+}
+.style-carrinho:hover{
+    background: none;
+}
+.menu-button {
+    display: none;
+}
+
+/* Main */
+main {
+    padding: 2rem 1rem;
+    background-color: #f7f7f7;
+}
+
+.page-inner-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #2c2c2c;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 2rem;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+main{
+    background-color: #ebebeb;
+}
+.gray-background{
+    background-color: #2c2c2c;
+}
+.page-inner-content{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.cols{
+    display: grid;
+    justify-content: space-evenly;
+    padding: 4rem 1rem;
+}
+.cols-3{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+.cols-3 img{
+    max-width: 100%;
+}
+.cols-4 img{
+    max-width: 100%;
+}
+.cols-4{
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+.cols>*{
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.cols>*:hover{
+    transform: translateY(-5px);
+}
+
+.section-title{
+    text-align: center;
+    margin-top: 4rem;
+    font-size: 1.8rem;
+}
+
+.subtitle-underline{
+    width: 100px;
+    height: 5px;
+    background-color: #0084ff;
+    border-radius: 9999px;
+    margin: 8px auto 0 auto;
+}
+.product{
+    color: 2c2c2c;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name{
+    font-weight: 600;
+    margin-top: 0.4rem;
+}
+
+.rate{
+    color: #0084ff;
+    font-size: 1.3rem;
+}
+
+.product-price span{
+    font-weight: 600;
+
+}
+.exclusive-container{
+    color: #fff;
+    flex-direction: row-reverse;
+    padding: 5rem 1rem;
+}
+.exclusive-container img {
+    max-width: 500px;
+}
+/* main */
+/* Footer */
+.footer-content{
+    display: flex;
+    align-items: center;
+    color: #8f8f8f;
+    padding: 4rem 1rem;
+    gap: 2rem;
+}
+
+.download-options>*{
+    margin: 1rem 0;
+}
+
+.download-options>p:first-child{
+    font-weight: bold;
+    color: #fff;
+}
+
+.download-options>div{
+    display: flex;
+}
+
+.download-options>div img{
+    width: 100px;
+}
+
+.logo-footer{
+    text-align: center;
+}
+
+.links-footer h3{
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+.links-footer ul{
+    list-style: none;
+}
+
+.links-footer ul li{
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.copyright{
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Media Queries */
+@media (max-width: 800px){
+    .footer-content{
+        display: inline;
+        font-size: 0.8rem;
+    }
+    .footer-content>div{
+        padding: 1rem;
+    }
+    .download-options>div{
+        display: inline;
+    }
+    .download-options>div img{
+        width: 120px;
+    }
+    .copyright{
+        font-size: 0.8rem;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-inner-content {
+        flex-direction: column;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .lista {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lista li {
+        margin: 0.5rem 0;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
